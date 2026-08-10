@@ -1,0 +1,205 @@
+{
+  "_comment": "THIS IS DEMO DATA FOR HACKATHON PURPOSES ONLY. NOT VERIFIED GOVERNMENT PRICING. CGHS rates are approximate reference values for Round 1 HackFusion demo.",
+  "tests": [
+    {
+      "id": "cbc",
+      "name_en": "Complete Blood Count",
+      "name_ta": "முழு இரத்த எண்ணிக்கை",
+      "aliases": ["CBC", "Complete Blood Picture", "CBP", "Haemogram", "Hemogram", "Blood Count", "FBC", "Full Blood Count", "complete blood count"],
+      "explanation_en": "A CBC measures the different components of your blood including red cells, white cells, and platelets. It helps detect conditions like anaemia, infection, or clotting disorders. It is one of the most routine blood tests ordered by doctors.",
+      "explanation_ta": "முழு இரத்த எண்ணிக்கை பரிசோதனை உங்கள் இரத்தத்தில் உள்ள சிவப்பு அணுக்கள், வெள்ளை அணுக்கள் மற்றும் பிளேட்லெட்டுகளை அளவிடுகிறது. இது இரத்த சோகை, தொற்று அல்லது உறைவு பிரச்சனைகளை கண்டறிய உதவுகிறது. மருத்துவர்கள் அதிகமாக பரிந்துரைக்கும் சாதாரண பரிசோதனைகளில் இதுவும் ஒன்று.",
+      "cghs_price_inr": 120,
+      "category": "Blood Test"
+    },
+    {
+      "id": "lipid_profile",
+      "name_en": "Lipid Profile",
+      "name_ta": "லிப்பிட் சுயவிவரம்",
+      "aliases": ["Lipid Panel", "Cholesterol Test", "Lipid Profile Test", "Cholesterol Panel", "Lipid screen", "lipid"],
+      "explanation_en": "A lipid profile measures cholesterol and triglycerides in your blood. It helps assess your risk of heart disease and stroke. Doctors use it to decide whether you need lifestyle changes or cholesterol-lowering medication.",
+      "explanation_ta": "லிப்பிட் சுயவிவரம் உங்கள் இரத்தத்தில் கொழுப்பு மற்றும் ட்ரைகிளிசரைடுகளின் அளவை அளவிடுகிறது. இது இதய நோய் மற்றும் பக்கவாதம் வரும் ஆபத்தை மதிப்பிட உதவுகிறது. கொழுப்பு குறைக்கும் மருந்து தேவையா என முடிவு செய்ய மருத்துவர்கள் இதை பயன்படுத்துகிறார்கள்.",
+      "cghs_price_inr": 220,
+      "category": "Blood Test"
+    },
+    {
+      "id": "blood_sugar_fasting",
+      "name_en": "Blood Sugar Fasting",
+      "name_ta": "உபவாச இரத்த சர்க்கரை",
+      "aliases": ["FBS", "Fasting Blood Glucose", "Fasting Blood Sugar", "Fasting Glucose", "Blood Glucose Fasting", "BSF", "Glucose Fasting"],
+      "explanation_en": "This test measures your blood glucose level after you have not eaten for at least 8 hours. It is the primary test used to diagnose diabetes and pre-diabetes. A high fasting blood sugar can indicate that your body is not managing glucose properly.",
+      "explanation_ta": "இந்த பரிசோதனை குறைந்தது 8 மணி நேரம் உணவு சாப்பிடாமல் இருந்த பின்னர் உங்கள் இரத்தத்தில் சர்க்கரையின் அளவை அளவிடுகிறது. சர்க்கரை நோய் மற்றும் முன்-சர்க்கரை நோயை கண்டறிய இது பயன்படுகிறது. அதிகமான உபவாச சர்க்கரை அளவு, உடல் சரியாக குளுக்கோஸை கையாளவில்லை என்பதை காட்டுகிறது.",
+      "cghs_price_inr": 50,
+      "category": "Blood Test"
+    },
+    {
+      "id": "hba1c",
+      "name_en": "HbA1c (Glycated Haemoglobin)",
+      "name_ta": "HbA1c (கிளைகேட்டட் ஹீமோகுளோபின்)",
+      "aliases": ["HbA1c", "A1C", "Glycated Haemoglobin", "Glycosylated Hemoglobin", "Hemoglobin A1c", "HBA1C", "Glycohaemoglobin", "GHb"],
+      "explanation_en": "The HbA1c test shows your average blood sugar level over the past 2 to 3 months. Unlike a fasting sugar test, it does not require you to fast. It is used both to diagnose diabetes and to monitor how well a diabetic patient is managing their sugar levels.",
+      "explanation_ta": "HbA1c பரிசோதனை கடந்த 2 முதல் 3 மாதங்களில் உங்கள் சராசரி இரத்த சர்க்கரை அளவை காட்டுகிறது. உபவாச சர்க்கரை பரிசோதனையைப் போலல்லாமல், இதற்கு உபவாசம் தேவையில்லை. சர்க்கரை நோயை கண்டறியவும், நோயாளி எவ்வளவு நன்றாக சர்க்கரையை கட்டுப்படுத்துகிறார் என்பதை கண்காணிக்கவும் இது பயன்படுகிறது.",
+      "cghs_price_inr": 200,
+      "category": "Blood Test"
+    },
+    {
+      "id": "thyroid_profile",
+      "name_en": "Thyroid Profile (TSH)",
+      "name_ta": "தைராய்டு சுயவிவரம் (TSH)",
+      "aliases": ["TSH", "Thyroid Stimulating Hormone", "Thyroid Profile", "Thyroid Function Test", "TFT", "Thyroid Test", "T3 T4 TSH", "T3T4TSH"],
+      "explanation_en": "The thyroid profile checks how well your thyroid gland is working by measuring TSH, T3, and T4 hormone levels. An underactive or overactive thyroid can cause fatigue, weight changes, and mood issues. It is a simple blood test that helps guide thyroid treatment.",
+      "explanation_ta": "தைராய்டு சுயவிவரம் TSH, T3 மற்றும் T4 ஹார்மோன் அளவுகளை அளவிட்டு உங்கள் தைராய்டு சுரப்பி சரியாக இயங்குகிறதா என்பதை சோதிக்கிறது. தைராய்டு குறைவாக அல்லது அதிகமாக இயங்கினால் சோர்வு, எடை மாற்றம் மற்றும் மனநிலை பிரச்சனைகள் வரலாம். தைராய்டு சிகிச்சையை வழிநடத்த இது உதவுகிறது.",
+      "cghs_price_inr": 350,
+      "category": "Blood Test"
+    },
+    {
+      "id": "lft",
+      "name_en": "Liver Function Test",
+      "name_ta": "கல்லீரல் செயல்பாடு சோதனை",
+      "aliases": ["LFT", "Liver Function Test", "Liver Panel", "Hepatic Function Panel", "Liver Profile", "Liver enzymes", "SGOT SGPT", "ALT AST"],
+      "explanation_en": "A liver function test checks if your liver is working properly by measuring enzymes and proteins in your blood. It can detect liver damage from conditions like hepatitis, fatty liver, or alcohol use. Early detection through this test can prevent serious liver complications.",
+      "explanation_ta": "கல்லீரல் செயல்பாடு சோதனை உங்கள் இரத்தத்தில் நொதிகள் மற்றும் புரதங்களை அளவிட்டு கல்லீரல் சரியாக வேலை செய்கிறதா என்பதை சோதிக்கிறது. ஹெபடைட்டிஸ், கொழுப்பு கல்லீரல் அல்லது மது பழக்கத்தால் ஏற்பட்ட கல்லீரல் பாதிப்பை கண்டறியலாம். இந்த பரிசோதனை மூலம் ஆரம்பத்திலேயே கண்டறிவது தீவிர சிக்கல்களை தடுக்கும்.",
+      "cghs_price_inr": 300,
+      "category": "Blood Test"
+    },
+    {
+      "id": "kft",
+      "name_en": "Kidney Function Test",
+      "name_ta": "சிறுநீரக செயல்பாடு சோதனை",
+      "aliases": ["KFT", "Kidney Function Test", "Renal Function Test", "RFT", "BUN Creatinine", "Urea Creatinine", "Kidney Panel", "Renal Panel"],
+      "explanation_en": "This test checks how well your kidneys are filtering waste from your blood by measuring creatinine, urea, and other markers. It is important for people with diabetes or high blood pressure who are at risk of kidney disease. Early diagnosis can slow the progression of kidney damage.",
+      "explanation_ta": "இந்த சோதனை கிரியேட்டினின், யூரியா மற்றும் பிற குறிகாட்டிகளை அளவிட்டு உங்கள் சிறுநீரகங்கள் இரத்தத்திலிருந்து கழிவுகளை எவ்வளவு நன்றாக வடிகட்டுகின்றன என்பதை சோதிக்கிறது. சிறுநீரக நோய் ஆபத்தில் உள்ள சர்க்கரை நோயாளிகள் மற்றும் உயர் இரத்த அழுத்தம் உள்ளவர்களுக்கு இது முக்கியமானது. ஆரம்ப கண்டறிதல் சிறுநீரக பாதிப்பின் தீவிரத்தை குறைக்கும்.",
+      "cghs_price_inr": 300,
+      "category": "Blood Test"
+    },
+    {
+      "id": "xray_chest",
+      "name_en": "X-Ray Chest (PA View)",
+      "name_ta": "மார்பு எக்ஸ்-கதிர் (PA பார்வை)",
+      "aliases": ["Chest X-Ray", "CXR", "X Ray Chest", "Chest Xray", "Chest X Ray PA", "X-ray chest PA view", "Chest PA", "PA view"],
+      "explanation_en": "A chest X-ray takes an image of your lungs and heart to check for conditions like pneumonia, TB, or an enlarged heart. It is a quick and painless test that is often done as part of a routine health check or pre-operative evaluation. The PA view means the X-ray is taken from the back to the front.",
+      "explanation_ta": "மார்பு எக்ஸ்-கதிர் நிமோனியா, காசநோய் அல்லது இதயம் பெரிதாவது போன்ற நிலைகளை சோதிக்க உங்கள் நுரையீரல் மற்றும் இதயத்தின் படம் எடுக்கிறது. இது வழக்கமான உடல் பரிசோதனை அல்லது அறுவை சிகிச்சைக்கு முன் மதிப்பீட்டில் அடிக்கடி செய்யப்படும் விரைவான மற்றும் வலியற்ற பரிசோதனை. PA பார்வை என்பது எக்ஸ்-கதிர் பின்புறத்திலிருந்து முன்புறமாக எடுக்கப்படுகிறது என்று பொருள்.",
+      "cghs_price_inr": 130,
+      "category": "Imaging"
+    },
+    {
+      "id": "ecg",
+      "name_en": "ECG / Electrocardiogram",
+      "name_ta": "ECG / மின்-இதயவரைவு",
+      "aliases": ["ECG", "EKG", "Electrocardiogram", "Electrocardiograph", "12 lead ECG", "12-lead ECG", "Resting ECG", "Cardiac trace"],
+      "explanation_en": "An ECG records the electrical activity of your heart to detect abnormal heart rhythms, heart attacks, or other cardiac conditions. Small electrodes are placed on your chest, arms, and legs for a few minutes. It is painless and gives your doctor important information about your heart health.",
+      "explanation_ta": "ECG உங்கள் இதயத்தின் மின் செயல்பாட்டை பதிவு செய்து அசாதாரண இதயத் தாளங்கள், மாரடைப்பு அல்லது பிற இதய நிலைகளை கண்டறிகிறது. சில நிமிடங்களுக்கு உங்கள் மார்பு, கைகள் மற்றும் கால்களில் சிறிய மின்முனைகள் வைக்கப்படும். இது வலியற்றது மற்றும் உங்கள் இதய ஆரோக்கியம் பற்றி மருத்துவருக்கு முக்கியமான தகவல்களை தருகிறது.",
+      "cghs_price_inr": 110,
+      "category": "Cardiac"
+    },
+    {
+      "id": "usg_abdomen",
+      "name_en": "Ultrasound Abdomen",
+      "name_ta": "வயிறு அல்ட்ராசவுண்ட்",
+      "aliases": ["USG Abdomen", "Ultrasound Abdomen", "Abdominal Ultrasound", "USG Whole Abdomen", "Sonography Abdomen", "Abdo USG", "Abdominal Sonogram"],
+      "explanation_en": "An abdominal ultrasound uses sound waves to create images of the organs in your abdomen including the liver, kidney, gallbladder, and pancreas. It is used to detect stones, cysts, or abnormal organ sizes. The test is non-invasive and does not involve any radiation.",
+      "explanation_ta": "வயிறு அல்ட்ராசவுண்ட் கல்லீரல், சிறுநீரகம், பித்தப்பை மற்றும் கணையம் உட்பட வயிற்றிலுள்ள உறுப்புகளின் படங்களை உருவாக்க ஒலி அலைகளை பயன்படுத்துகிறது. கற்கள், நீர்க்கோள்கள் அல்லது அசாதாரண உறுப்பு அளவுகளை கண்டறிய இது பயன்படுகிறது. இந்த பரிசோதனை ஊடுருவாதது மற்றும் கதிர்வீச்சு இல்லாதது.",
+      "cghs_price_inr": 450,
+      "category": "Imaging"
+    },
+    {
+      "id": "mri_brain",
+      "name_en": "MRI Brain",
+      "name_ta": "மூளை MRI",
+      "aliases": ["MRI Brain", "MRI of Brain", "Brain MRI", "MRI Head", "Brain Scan MRI", "Magnetic Resonance Imaging Brain"],
+      "explanation_en": "An MRI brain scan creates detailed images of your brain using strong magnetic fields, without any X-ray radiation. It is used to detect strokes, tumours, bleeding, or nerve conditions. The scan usually takes 30 to 60 minutes and you need to lie still inside a large tube-shaped machine.",
+      "explanation_ta": "மூளை MRI ஸ்கேன் எக்ஸ்-கதிர் கதிர்வீச்சு இல்லாமல் வலுவான காந்த புலங்களைப் பயன்படுத்தி உங்கள் மூளையின் விரிவான படங்களை உருவாக்குகிறது. பக்கவாதம், கட்டிகள், இரத்தக்கசிவு அல்லது நரம்பு நிலைகளை கண்டறிய இது பயன்படுகிறது. ஸ்கேன் பொதுவாக 30 முதல் 60 நிமிடங்கள் எடுக்கும், நீங்கள் பெரிய குழாய் வடிவ இயந்திரத்திற்குள் அமைதியாக படுத்திருக்க வேண்டும்.",
+      "cghs_price_inr": 3500,
+      "category": "Imaging"
+    },
+    {
+      "id": "ct_scan",
+      "name_en": "CT Scan",
+      "name_ta": "CT ஸ்கேன்",
+      "aliases": ["CT Scan", "Computed Tomography", "CAT Scan", "CT", "CT scan head", "HRCT", "CT Chest", "CT Abdomen"],
+      "explanation_en": "A CT scan uses X-rays from multiple angles to create cross-sectional images of the body. It is faster than an MRI and is used for emergencies like suspected fractures, internal bleeding, or organ damage. It does involve radiation, so it is only done when medically necessary.",
+      "explanation_ta": "CT ஸ்கேன் உடலின் குறுக்குவெட்டு படங்களை உருவாக்க பல கோணங்களில் எக்ஸ்-கதிர்களை பயன்படுத்துகிறது. இது MRI ஐ விட வேகமானது மற்றும் சந்தேகிக்கப்படும் எலும்பு முறிவுகள், உள் இரத்தக்கசிவு அல்லது உறுப்பு பாதிப்பு போன்ற அவசரகால சூழ்நிலைகளில் பயன்படுத்தப்படுகிறது. இது கதிர்வீச்சை உள்ளடக்கியதால், மருத்துவ தேவை இருக்கும்போது மட்டுமே செய்யப்படுகிறது.",
+      "cghs_price_inr": 2800,
+      "category": "Imaging"
+    },
+    {
+      "id": "urine_routine",
+      "name_en": "Urine Routine Examination",
+      "name_ta": "சிறுநீர் வழக்கமான பரிசோதனை",
+      "aliases": ["Urine Routine", "Urine RE", "Urine R/E", "Urinalysis", "Urine Analysis", "Urine Test", "Urine Examination", "Urine Routine Microscopy"],
+      "explanation_en": "A urine routine test analyses the colour, pH, protein, sugar, and cells in your urine. It can detect urinary tract infections, kidney disease, and diabetes-related changes. It is a simple test that requires a fresh urine sample collected in the morning.",
+      "explanation_ta": "சிறுநீர் வழக்கமான பரிசோதனை உங்கள் சிறுநீரில் உள்ள நிறம், pH, புரதம், சர்க்கரை மற்றும் அணுக்களை பகுப்பாய்வு செய்கிறது. சிறுநீர் பாதை நோய்த்தொற்றுகள், சிறுநீரக நோய் மற்றும் சர்க்கரை தொடர்பான மாற்றங்களை கண்டறியலாம். காலையில் சேகரிக்கப்பட்ட புதிய சிறுநீர் மாதிரி தேவைப்படும் இது ஒரு எளிய பரிசோதனை.",
+      "cghs_price_inr": 50,
+      "category": "Urine Test"
+    },
+    {
+      "id": "dengue_ns1",
+      "name_en": "Dengue NS1 Antigen",
+      "name_ta": "டெங்கு NS1 ஆன்டிஜென்",
+      "aliases": ["Dengue NS1", "NS1 Antigen", "Dengue Antigen", "Dengue NS1 Ag", "Dengue Test", "NS1"],
+      "explanation_en": "The Dengue NS1 antigen test detects the dengue virus in your blood during the early stage of infection, usually within the first 5 days of fever. A positive result confirms dengue infection and helps doctors start appropriate treatment quickly. It is done with a simple blood sample.",
+      "explanation_ta": "டெங்கு NS1 ஆன்டிஜென் பரிசோதனை காய்ச்சல் தொடங்கிய முதல் 5 நாட்களுக்குள் ஆரம்ப கட்டத்தில் உங்கள் இரத்தத்தில் டெங்கு வைரஸை கண்டறிகிறது. நேர்மறை முடிவு டெங்கு தொற்றை உறுதிப்படுத்தி விரைவாக சரியான சிகிச்சை தொடங்க மருத்துவர்களுக்கு உதவுகிறது. இது ஒரு எளிய இரத்த மாதிரி மூலம் செய்யப்படுகிறது.",
+      "cghs_price_inr": 600,
+      "category": "Blood Test"
+    },
+    {
+      "id": "widal_test",
+      "name_en": "Widal Test",
+      "name_ta": "விடால் சோதனை",
+      "aliases": ["Widal", "Widal Test", "Typhoid Test", "Salmonella Test", "Widal agglutination"],
+      "explanation_en": "The Widal test checks for antibodies against Salmonella bacteria, which cause typhoid fever. A positive result suggests a past or current typhoid infection. It is an older test and results should be interpreted carefully alongside symptoms and the clinical picture.",
+      "explanation_ta": "விடால் சோதனை டைஃபாய்டு காய்ச்சலை ஏற்படுத்தும் சால்மோனெல்லா பாக்டீரியாவுக்கு எதிரான ஆன்டிபாடிகளை சோதிக்கிறது. நேர்மறை முடிவு கடந்த அல்லது தற்போதைய டைஃபாய்டு தொற்றை சுட்டிக்காட்டுகிறது. இது பழமையான சோதனை, முடிவுகளை அறிகுறிகள் மற்றும் மருத்துவ நிலையுடன் கவனமாக விளக்க வேண்டும்.",
+      "cghs_price_inr": 100,
+      "category": "Blood Test"
+    },
+    {
+      "id": "consultation_general",
+      "name_en": "Consultation Fee (General Physician)",
+      "name_ta": "ஆலோசனை கட்டணம் (பொது மருத்துவர்)",
+      "aliases": ["Consultation", "OPD Charges", "Doctor Fee", "Consulting Fee", "General Consultation", "OPD Fee", "Consultation Charges", "Doctor Consultation"],
+      "explanation_en": "This is the fee charged by a general physician for seeing and examining you during an outpatient visit. It typically covers the doctor's assessment, advice, and prescription. This is separate from any tests or medicines you may be prescribed.",
+      "explanation_ta": "இது ஒரு பொது மருத்துவர் வெளிநோயாளி வருகையின் போது உங்களை பரிசோதிப்பதற்கு வசூலிக்கும் கட்டணம். இது பொதுவாக மருத்துவரின் மதிப்பீடு, ஆலோசனை மற்றும் மருந்துச்சீட்டை உள்ளடக்கியது. இது மருத்துவர் பரிந்துரைக்கும் எந்த பரிசோதனைகள் அல்லது மருந்துகளிலிருந்தும் வேறானது.",
+      "cghs_price_inr": 300,
+      "category": "Consultation"
+    },
+    {
+      "id": "consultation_specialist",
+      "name_en": "Consultation Fee (Specialist)",
+      "name_ta": "ஆலோசனை கட்டணம் (நிபுணர்)",
+      "aliases": ["Specialist Consultation", "Specialist Fee", "Specialist Charges", "Specialist OPD", "Super Specialist Fee", "Cardiologist fee", "Neurologist fee"],
+      "explanation_en": "This is the fee for consulting a specialist doctor such as a cardiologist, neurologist, or endocrinologist. Specialist fees are higher than general physician fees because of their advanced training and expertise. Your general doctor will refer you to a specialist if your condition needs more focused care.",
+      "explanation_ta": "இது இதயநோய் நிபுணர், நரம்பியல் நிபுணர் அல்லது நாளமில்லா சுரப்பி நிபுணர் போன்ற நிபுணர் மருத்துவரை ஆலோசிப்பதற்கான கட்டணம். நிபுணர் கட்டணங்கள் அவர்களின் மேம்பட்ட பயிற்சி மற்றும் நிபுணத்துவம் காரணமாக பொது மருத்துவர் கட்டணங்களை விட அதிகமாக இருக்கும். உங்கள் நிலைக்கு கூடுதல் கவனம் தேவைப்பட்டால் பொது மருத்துவர் உங்களை நிபுணரிடம் அனுப்புவார்.",
+      "cghs_price_inr": 500,
+      "category": "Consultation"
+    },
+    {
+      "id": "iv_fluid",
+      "name_en": "IV Fluid Administration",
+      "name_ta": "IV திரவ நிர்வாகம்",
+      "aliases": ["IV Fluid", "Intravenous Fluid", "Saline Drip", "IV Drip", "Normal Saline", "Ringer Lactate", "Dextrose Saline", "IV NS", "IV RL"],
+      "explanation_en": "IV fluid administration means giving fluids directly into your vein through a drip. It is used to treat dehydration, maintain blood pressure, or deliver medications when you cannot take them orally. The charge usually covers the fluid bag, IV set, and the nursing procedure.",
+      "explanation_ta": "IV திரவ நிர்வாகம் என்பது திரவத்தை நேரடியாக ஒரு குழாயின் மூலம் உங்கள் நரம்பில் செலுத்துவது. நீர்ச்சத்து குறைபாட்டை சரிசெய்ய, இரத்த அழுத்தத்தை பராமரிக்க அல்லது வாயினால் எடுக்க முடியாதபோது மருந்துகளை வழங்க இது பயன்படுகிறது. கட்டணம் பொதுவாக திரவ பை, IV தொகுப்பு மற்றும் நர்சிங் செயல்முறையை உள்ளடக்கியது.",
+      "cghs_price_inr": 80,
+      "category": "Procedure"
+    },
+    {
+      "id": "nebulization",
+      "name_en": "Nebulization",
+      "name_ta": "நெபுலைசேஷன்",
+      "aliases": ["Nebulization", "Nebuliser Treatment", "Nebulizer", "Nebulisation", "Inhaler Therapy", "Respule Treatment"],
+      "explanation_en": "Nebulization converts liquid medication into a fine mist that you breathe in through a mask or mouthpiece. It is used to treat asthma, COPD, or breathing difficulties and delivers medicine directly to the lungs. Each session usually takes 10 to 15 minutes.",
+      "explanation_ta": "நெபுலைசேஷன் திரவ மருந்தை ஒரு முகமூடி அல்லது வாய்க்குழாய் மூலம் சுவாசிக்கக்கூடிய மெல்லிய மூட்டமாக மாற்றுகிறது. ஆஸ்துமா, COPD அல்லது சுவாச சிரமங்களை சிகிச்சையளிக்க இது நுரையீரலுக்கு நேரடியாக மருந்து வழங்குகிறது. ஒவ்வொரு அமர்வும் பொதுவாக 10 முதல் 15 நிமிடங்கள் எடுக்கும்.",
+      "cghs_price_inr": 75,
+      "category": "Procedure"
+    },
+    {
+      "id": "blood_sugar_pp",
+      "name_en": "Blood Sugar Post Prandial",
+      "name_ta": "உணவுக்குப் பிந்தைய இரத்த சர்க்கரை",
+      "aliases": ["PPBS", "Post Prandial Blood Sugar", "2hr PP", "2 Hour PP", "Post Meal Blood Sugar", "Blood Sugar PP", "Post Prandial Glucose", "2hr postprandial"],
+      "explanation_en": "This test measures your blood sugar 2 hours after eating a meal. It helps assess how well your body is processing glucose after food and is used alongside fasting sugar to diagnose or manage diabetes. A high post-meal sugar reading can indicate insulin resistance.",
+      "explanation_ta": "இந்த பரிசோதனை உணவு சாப்பிட்ட 2 மணி நேரம் கழித்து உங்கள் இரத்த சர்க்கரையை அளவிடுகிறது. உணவுக்குப் பிறகு உங்கள் உடல் குளுக்கோஸை எவ்வளவு நன்றாக செயலாக்குகிறது என்பதை மதிப்பிட உதவுகிறது. சர்க்கரை நோயை கண்டறிய அல்லது நிர்வகிக்க உபவாச சர்க்கரையுடன் சேர்த்து பயன்படுத்தப்படுகிறது.",
+      "cghs_price_inr": 50,
+      "category": "Blood Test"
+    }
+  ]
+}
