@@ -62,8 +62,9 @@ export async function POST(request: NextRequest) {
 			console.warn('Storage upload skipped:', _storageError);
 		}
 
-		// Step 2: Call Gemini 2.5 Flash with the image
-		const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' });
+		// Step 2: Call Gemini 3.6 Flash (latest stable multimodal model) with the image
+		const modelName = process.env.GEMINI_MODEL || 'gemini-3.6-flash';
+		const model = genAI.getGenerativeModel({ model: modelName });
 
 		const systemPrompt = `You are extracting line items from an Indian medical bill or prescription photo.
 Return ONLY valid JSON, no markdown fences, no preamble, no explanation.
@@ -94,7 +95,14 @@ Rules:
 		let geminiResult: GeminiResponse = { items: [] };
 
 		try {
-			const result = await model.generateContent([systemPrompt, imagePart]);
+			let result;
+			try {
+				result = await model.generateContent([systemPrompt, imagePart]);
+			} catch (primaryErr) {
+				console.warn(`Primary model (${modelName}) failed, attempting fallback to gemini-2.5-flash:`, primaryErr);
+				const fallbackModel = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' });
+				result = await fallbackModel.generateContent([systemPrompt, imagePart]);
+			}
 			const responseText = result.response.text().trim();
 
 			// Strip markdown fences if Gemini adds them anyway
