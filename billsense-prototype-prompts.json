@@ -1,0 +1,46 @@
+{
+  "BillSense Prototype (HackFusion Round 1 Demo)": [
+    {
+      "step": 1,
+      "title": "Project Scaffold",
+      "prompt": "Create a fresh Next.js 14 App Router project called 'billsense' with TypeScript and Tailwind CSS. Install and configure: @supabase/supabase-js, @google/generative-ai. Set up .env.local with placeholders: NEXT_PUBLIC_SUPABASE_URL, NEXT_PUBLIC_SUPABASE_ANON_KEY, GEMINI_API_KEY. Create a Supabase Storage bucket called 'bill-uploads' (public read) for storing uploaded bill/prescription photos. Do not build any auth — this is a public, no-login demo tool. Folder structure: app/, components/, lib/, data/.",
+      "ui_details": "No UI in this step — scaffold only."
+    },
+    {
+      "step": 2,
+      "title": "Hardcoded Medical Test Dataset",
+      "prompt": "Create data/tests.json containing 20 common Indian medical tests/procedures. Each entry: { id, name_en, name_ta, aliases: string[] (common misspellings/short forms OCR might catch), explanation_en (2-3 plain sentences), explanation_ta (2-3 plain sentences, natural Tamil not robotic), cghs_price_inr (number), category (e.g. 'Blood Test', 'Imaging', 'Consultation') }. Cover common ones: CBC, Lipid Profile, Blood Sugar Fasting, HbA1c, Thyroid Profile (TSH), Liver Function Test, Kidney Function Test, X-Ray Chest, ECG, Ultrasound Abdomen, MRI Brain, CT Scan, Urine Routine, Dengue NS1, Widal Test, Chest X-Ray PA View, Consultation Fee (General), Consultation Fee (Specialist), IV Fluid Administration, Nebulization. Mark this file clearly with a top-level comment: THIS IS DEMO DATA FOR HACKATHON PURPOSES, NOT VERIFIED GOVERNMENT PRICING.",
+      "ui_details": "No UI — data file only."
+    },
+    {
+      "step": 3,
+      "title": "Upload + Language Toggle Screen (Home Page)",
+      "prompt": "Build app/page.tsx as the main screen. Center layout, max-width container. Header: 'BillSense' logo/wordmark, tagline 'Understand your medical bill in seconds.' Language toggle top-right: two pill buttons 'English' / 'தமிழ்', default English, controls all page text including results later (lift state to a React context so it's available downstream). Below header: a large dashed-border drop zone / click-to-upload card with a camera/upload icon, text 'Upload a photo of your bill or prescription' (translated based on toggle). Accept image files only, show a preview thumbnail after selection. Below the drop zone: a primary button 'Explain My Bill' (disabled until an image is selected), full width on mobile. Keep the visual tone calm and reassuring — soft rounded corners, generous whitespace, a muted teal/blue palette (this is a health tool, avoid alarming red as a primary color, reserve red only for the 'overpriced' flag later).",
+      "ui_details": "Mobile-first, single column. Drop zone should have a hover/drag-active state. Show a loading spinner state on the button while processing (step 5)."
+    },
+    {
+      "step": 4,
+      "title": "Gemini OCR + Match + Explain API Route",
+      "prompt": "Create app/api/analyze/route.ts (POST). Accept an uploaded image (multipart or base64). Steps: 1) Upload image to Supabase Storage bucket 'bill-uploads', get public URL. 2) Call Gemini 2.5 Flash with the image and this system instruction: 'You are extracting line items from an Indian medical bill or prescription photo. Return ONLY valid JSON, no markdown fences, no preamble. For each distinct test/procedure/consultation line you can identify, return {raw_text, guessed_test_name}. If the image is unreadable or not a medical bill, return {error: true}.' 3) In the API route (not the LLM), match each guessed_test_name against data/tests.json using simple fuzzy string matching against name_en, name_ta, and aliases (use a lightweight fuzzy match — e.g. Levenshtein distance or substring/token overlap, no external OCR-specific NLP needed). 4) For each matched test, compute a price flag: if bill has a price for that line AND it exceeds cghs_price_inr by more than 40%, flag 'high'; if within range, flag 'fair'; if no price could be extracted from the bill, flag 'no_data'. 5) Return JSON: { matched: [{test, billed_price_if_found, flag}], unmatched: [raw_text strings not matched to any known test] }.",
+      "ui_details": "No UI — API route only. Must return within a reasonable timeout; show a friendly error if Gemini call fails or times out."
+    },
+    {
+      "step": 5,
+      "title": "Results Screen",
+      "prompt": "Build the results view (can be a state change on the same page, no need for routing). On 'Explain My Bill' click, call /api/analyze, show a loading state with a short reassuring message ('Reading your bill...'). On success, render a vertical stack of test cards, one per matched test. Each card shows: test name (in selected language), plain-language explanation (in selected language), a colored price flag badge — green 'Fair Price' / amber 'No Price Data' / red 'Higher Than Reference' — and if flagged, show the CGHS reference price vs billed price side by side. If there are unmatched line items, show a small collapsed section at the bottom: 'We couldn't identify N items' listing the raw text, so it's honest about limitations rather than hiding them. Add a persistent small disclaimer bar at the bottom of results: 'This is informational, not medical advice. Prices are reference estimates, not guarantees.' (translated).",
+      "ui_details": "Cards stack vertically, mobile-first. Flag badge uses color + icon + text (not color alone, for accessibility). Disclaimer bar should be low-emphasis (small text, muted background) but always visible, not dismissible."
+    },
+    {
+      "step": 6,
+      "title": "WhatsApp Shareable Card Generator",
+      "prompt": "Add a 'Share Summary' button on the results screen. On click, generate a single shareable image (use html-to-canvas approach via a library like html2canvas, or render a hidden styled div and export it as PNG) summarizing: total tests explained, count flagged 'high', and a BillSense wordmark/watermark at the bottom. Trigger the browser's native share sheet if available (navigator.share with the image file), otherwise fall back to a direct image download. Keep the card visually clean — this image is the viral/growth mechanism, it should look trustworthy and shareable, not like a broken screenshot.",
+      "ui_details": "Card should be a fixed aspect ratio suited for WhatsApp status/sharing (roughly 4:5 or square). Include app name/wordmark small at bottom, not oversized branding."
+    },
+    {
+      "step": 7,
+      "title": "Deploy to Vercel",
+      "prompt": "Prepare for deployment: verify all env vars are set in Vercel project settings (Supabase URL/key, Gemini API key — server-side only, never exposed client-side). Run a production build locally first to catch errors. Deploy to Vercel. After deploy, do a manual smoke test: upload a real messy photo of a bill/prescription, confirm OCR → match → explain → share flow works end to end on both English and Tamil toggle.",
+      "ui_details": "No new UI — verification pass only."
+    }
+  ]
+}
