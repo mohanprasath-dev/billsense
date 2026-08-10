@@ -20,7 +20,13 @@ export const metadata: Metadata = {
 		title: 'BillSense — Understand Your Medical Bill',
 		description: 'Plain-language explanations of every test on your bill, with CGHS reference pricing.',
 		type: 'website',
-		images: [{ url: '/logo.png', width: 1200, height: 630, alt: 'BillSense Logo' }],
+		images: [{ url: '/logo+name.png', width: 1200, height: 630, alt: 'BillSense — Understand Your Medical Bill' }],
+	},
+	twitter: {
+		card: 'summary_large_image',
+		title: 'BillSense — Understand Your Medical Bill',
+		description: 'Plain-language explanations of every test on your bill, with CGHS reference pricing.',
+		images: ['/logo+name.png'],
 	},
 };
 
