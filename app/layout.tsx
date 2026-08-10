@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
 import { LanguageProvider } from '@/lib/language-context';
+import FeedbackWidget from '@/components/feedback-widget';
+import ChatbotWidget, { ChatContextProvider } from '@/components/chatbot-widget';
 
 const inter = Inter({ subsets: ['latin'], display: 'swap' });
 
@@ -34,7 +36,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 	return (
 		<html lang="en">
 			<body className={`${inter.className} bg-slate-50 text-slate-900 antialiased min-h-screen selection:bg-teal-100 selection:text-teal-900`}>
-				<LanguageProvider>{children}</LanguageProvider>
+				<LanguageProvider>
+					<ChatContextProvider>
+						{children}
+						<FeedbackWidget />
+						<ChatbotWidget />
+					</ChatContextProvider>
+				</LanguageProvider>
 			</body>
 		</html>
 	);

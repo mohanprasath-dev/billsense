@@ -8,12 +8,14 @@ import { useLanguage } from '@/lib/language-context';
 import CameraCapture from '@/components/camera-capture';
 import ResultsSection from '@/components/results-section';
 import ShareCard from '@/components/share-card';
+import { useChatContext } from '@/components/chatbot-widget';
 import type { AnalyzeResponse } from '@/types';
 
 type AppState = 'idle' | 'loading' | 'results' | 'error';
 
 export default function BillSenseAppPage() {
 	const { language, setLanguage, t } = useLanguage();
+	const { setLastAnalysisResult } = useChatContext();
 	const [appState, setAppState] = useState<AppState>('idle');
 	const [selectedFile, setSelectedFile] = useState<File | null>(null);
 	const [previewUrl, setPreviewUrl] = useState<string | null>(null);
@@ -52,7 +54,9 @@ export default function BillSenseAppPage() {
 				return;
 			}
 
-			setResults(data as AnalyzeResponse);
+			const parsedData = data as AnalyzeResponse;
+			setResults(parsedData);
+			setLastAnalysisResult(parsedData);
 			setAppState('results');
 
 			setTimeout(() => {
