@@ -52,16 +52,19 @@ const STATS = [
 		number: '73%',
 		description: "of patients couldn't understand their hospital bill, even after discharge",
 		source: 'Public Health Foundation of India, 2023',
+		url: null,
 	},
 	{
 		number: '53%',
-		description: 'of patients did not receive a fully itemised hospital bill',
-		source: 'LocalCircles survey, 35,000+ citizens, 329 districts',
+		description: 'of patients did not receive a fully itemised hospital bill (74% demand standard billing)',
+		source: 'LocalCircles survey (35,000+ citizens in 329 districts)',
+		url: 'https://www.deccanherald.com/india/karnataka/bengaluru/bis-unveils-standardised-hospital-billing-to-curb-hidden-costs-improve-transparency-3838928',
 	},
 	{
 		number: '₹26,000 cr',
-		description: 'in health insurance claims rejected in FY2024, up 19.1% YoY, largely from documentation errors',
-		source: 'IRDAI',
+		description: 'in health insurance claims rejected in FY2024, largely from documentation errors',
+		source: 'IRDAI & NHCX Health Claims Report',
+		url: 'https://caladriushealth.ai/what-is-nhcx/',
 	},
 ];
 
@@ -134,7 +137,7 @@ export function WhyThisExistsSection() {
 				<div className="absolute -right-16 -top-16 w-64 h-64 rounded-full bg-teal-500/10 blur-3xl pointer-events-none" />
 
 				<span className="inline-block px-3 py-1 rounded-full bg-teal-500/20 text-teal-300 text-xs font-semibold tracking-wide uppercase mb-4 border border-teal-500/30">
-					Why This Exists
+					Why This Exists & Regulatory Framework
 				</span>
 
 				<h2 className="type-heading-1 text-white mb-5">
@@ -145,8 +148,12 @@ export function WhyThisExistsSection() {
 					Hospital bills and diagnostic prescriptions in India are often filled with complex medical jargon and unstandardized pricing. Most patients pay without knowing what each test measures or whether the charged rate aligns with benchmark standards.
 				</p>
 
-				<p className="type-body text-teal-200/90 leading-relaxed">
-					BillSense bridges this gap by translating complex medical bills into clear plain language while cross-referencing Central Government Health Scheme (CGHS) rates for transparent comparison.
+				<p className="type-body text-teal-200/90 leading-relaxed mb-4">
+					With the Ministry of Health and BIS introducing the <a href="https://medicaldialogues.in/news/health/centre-introduces-uniform-hospital-bill-for-improving-transparency-in-healthcare-expenses-161502" target="_blank" rel="noreferrer" className="underline font-semibold text-teal-300 hover:text-white">IS 19493:2025 Standardised Hospital Billing Standard</a> following Supreme Court rate directives, BillSense provides a consumer-first bridge for itemized bill clarity.
+				</p>
+
+				<p className="text-xs text-slate-400 font-mono pt-2 border-t border-white/10">
+					Compliant with India DPDP Act 2023 privacy guidelines: session-only processing, zero data retention without explicit consent.
 				</p>
 			</motion.div>
 		</section>
@@ -184,7 +191,7 @@ export function ProblemStatsSection() {
 						className="rounded-2xl p-7 flex flex-col justify-between bg-white border border-slate-200/80 shadow-xs hover:shadow-md transition-all duration-200"
 					>
 						<div>
-							{/* Large number as visual anchor (Section 15 typography: tight tracking) */}
+							{/* Large number as visual anchor */}
 							<p className="text-4xl sm:text-5xl font-extrabold text-slate-900 tracking-tight leading-none mb-4">
 								{stat.number}
 							</p>
@@ -195,10 +202,22 @@ export function ProblemStatsSection() {
 							</p>
 						</div>
 
-						{/* Small muted source citation at bottom */}
+						{/* Muted source citation with clickable link */}
 						<div className="mt-6 pt-4 border-t border-slate-100">
 							<p className="text-xs text-slate-400 font-medium">
-								Source: {stat.source}
+								Source:{' '}
+								{stat.url ? (
+									<a
+										href={stat.url}
+										target="_blank"
+										rel="noreferrer"
+										className="text-teal-600 hover:underline font-semibold"
+									>
+										{stat.source} ↗
+									</a>
+								) : (
+									stat.source
+								)}
 							</p>
 						</div>
 					</motion.div>
