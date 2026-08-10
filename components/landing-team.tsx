@@ -10,7 +10,7 @@ const TEAM_MEMBERS = [
 	},
 	{
 		name: 'Thejashree J P',
-		role: 'Team Member',
+		role: 'Research & Data Lead',
 		avatar: 'TJ',
 	},
 ];

@@ -164,7 +164,7 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 ## 10. Team & Contact
 
 - **Mohan Prasath**: Founder & Developer | [LinkedIn Profile](https://www.linkedin.com/in/mohanprasath21/)
-- **Thejashree J P**: Team Member
+- **Thejashree J P**: Research & Data Lead
 - **Agency / Studio**: [TaskDrift](https://taskdrift.in)
 - **Email**: info.taskdrift@gmail.com
 
