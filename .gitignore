@@ -40,8 +40,9 @@ yarn-error.log*
 .vercel
 
 # internal agent & prompt files
-.agents
+.agents/
 *.prompts.json
+*-prompts.json
 apple-design.md
 billsense-research-and-evaluation.md
 skills-lock.json
