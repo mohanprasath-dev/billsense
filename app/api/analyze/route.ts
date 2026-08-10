@@ -152,6 +152,22 @@ Rules:
 			}
 		}
 
+		// Step 4 (optional): Log scan to bill_scans table for demo analytics
+		// Non-blocking — if table doesn't exist yet, scan still works
+		try {
+			const language = request.headers.get('x-language') ?? 'en';
+			await supabaseAdmin.from('bill_scans').insert({
+				image_url: publicUrl,
+				matched_count: matched.length,
+				high_count: matched.filter((m) => m.flag === 'high').length,
+				fair_count: matched.filter((m) => m.flag === 'fair').length,
+				no_data_count: matched.filter((m) => m.flag === 'no_data').length,
+				language,
+			});
+		} catch {
+			// Silently skip — table may not exist in minimal setup
+		}
+
 		return NextResponse.json({
 			matched,
 			unmatched,
