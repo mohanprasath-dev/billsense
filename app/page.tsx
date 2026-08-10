@@ -163,7 +163,7 @@ export default function LandingPage() {
 					{/* Column 3: Credit Line */}
 					<div className="space-y-3 md:text-right">
 						<span className="inline-block px-3 py-1 rounded-full bg-teal-500/20 text-teal-300 font-semibold text-[10px] border border-teal-500/30">
-							Built for HackFusion 2026
+							Healthcare Transparency Initiative
 						</span>
 						<p className="text-slate-400">
 							Designed & Developed by{' '}

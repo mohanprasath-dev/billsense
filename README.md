@@ -2,7 +2,7 @@
 
 > **Understand what you are being charged for, in plain language.**
 
-> **Status**: Live Demo: Built for HackFusion 2026 (Round 1). Full product in development.
+> **Status**: Live Demo: Full product in development.
 
 ---
 
