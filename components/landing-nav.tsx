@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'motion/react';
 
 export default function LandingNav() {
@@ -10,14 +11,16 @@ export default function LandingNav() {
 	return (
 		<header className="sticky top-0 z-50 glass-chrome transition-all duration-300">
 			<div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-				{/* Wordmark */}
-				<Link href="/" className="flex items-center gap-2.5 group">
-					<div className="w-8 h-8 rounded-xl bg-gradient-to-br from-teal-500 to-teal-700 flex items-center justify-center shadow-sm shadow-teal-500/20 group-hover:scale-105 transition-transform duration-200">
-						<svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.2}>
-							<path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-						</svg>
-					</div>
-					<span className="font-bold text-slate-900 text-lg tracking-tight">BillSense</span>
+				{/* Brand Logo */}
+				<Link href="/" className="flex items-center group">
+					<Image
+						src="/logo.png"
+						alt="BillSense Logo"
+						width={150}
+						height={40}
+						priority
+						className="h-9 w-auto object-contain transition-transform duration-200 group-hover:scale-105"
+					/>
 				</Link>
 
 				{/* Desktop Nav Links */}

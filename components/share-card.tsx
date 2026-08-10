@@ -88,26 +88,9 @@ export default function ShareCard({ results, onClose }: ShareCardProps) {
 				>
 					<div className="h-full flex flex-col p-7 text-white">
 						{/* Header */}
-						<div className="flex items-center gap-3 mb-6">
-							<div
-								style={{
-									width: 38,
-									height: 38,
-									borderRadius: 12,
-									background: 'linear-gradient(135deg, #14b8a6, #06b6d4)',
-									display: 'flex',
-									alignItems: 'center',
-									justifyContent: 'center',
-								}}
-							>
-								<svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="white" strokeWidth={2}>
-									<path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-								</svg>
-							</div>
-							<div>
-								<p style={{ color: 'white', fontWeight: 700, fontSize: 18, margin: 0, letterSpacing: '-0.02em' }}>BillSense</p>
-								<p style={{ color: 'rgba(204,251,241,0.8)', fontSize: 11, margin: 0 }}>Medical Bill Analyser</p>
-							</div>
+						<div className="flex items-center justify-between mb-6">
+							<img src="/logo.png" alt="BillSense Logo" style={{ height: 34, width: 'auto', objectFit: 'contain' }} />
+							<span style={{ color: 'rgba(204,251,241,0.9)', fontSize: 11, fontWeight: 600, background: 'rgba(255,255,255,0.1)', padding: '3px 10px', borderRadius: 20 }}>Medical Bill Summary</span>
 						</div>
 
 						{/* Main Stat */}

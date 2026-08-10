@@ -2,6 +2,7 @@
 
 import { useState, useRef } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion } from 'motion/react';
 import { useLanguage } from '@/lib/language-context';
 import CameraCapture from '@/components/camera-capture';
@@ -81,13 +82,15 @@ export default function BillSenseAppPage() {
 				<div className="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between">
 					{/* Logo + Back Link */}
 					<div className="flex items-center gap-3">
-						<Link href="/" className="flex items-center gap-2 group">
-							<div className="w-8 h-8 rounded-xl bg-gradient-to-br from-teal-500 to-teal-700 flex items-center justify-center shadow-xs">
-								<svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-									<path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-								</svg>
-							</div>
-							<span className="font-bold text-slate-900 text-lg">BillSense</span>
+						<Link href="/" className="flex items-center group">
+							<Image
+								src="/logo.png"
+								alt="BillSense Logo"
+								width={140}
+								height={36}
+								priority
+								className="h-8 w-auto object-contain transition-transform duration-200 group-hover:scale-105"
+							/>
 						</Link>
 
 						{/* Demo Badge (Step 2 & 7) */}

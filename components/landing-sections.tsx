@@ -47,6 +47,24 @@ const STEPS = [
 	},
 ];
 
+const STATS = [
+	{
+		number: '73%',
+		description: "of patients couldn't understand their hospital bill, even after discharge",
+		source: 'Public Health Foundation of India, 2023',
+	},
+	{
+		number: '53%',
+		description: 'of patients did not receive a fully itemised hospital bill',
+		source: 'LocalCircles survey, 35,000+ citizens, 329 districts',
+	},
+	{
+		number: '₹26,000 cr',
+		description: 'in health insurance claims rejected in FY2024, up 19.1% YoY, largely from documentation errors',
+		source: 'IRDAI',
+	},
+];
+
 export function HowItWorksSection() {
 	return (
 		<section id="how-it-works" className="py-20 px-4 sm:px-6 max-w-6xl mx-auto">
@@ -131,6 +149,61 @@ export function WhyThisExistsSection() {
 					BillSense bridges this gap by translating complex medical bills into clear plain language while cross-referencing Central Government Health Scheme (CGHS) rates for transparent comparison.
 				</p>
 			</motion.div>
+		</section>
+	);
+}
+
+export function ProblemStatsSection() {
+	return (
+		<section id="problem-in-numbers" className="py-16 px-4 sm:px-6 max-w-6xl mx-auto">
+			<div className="text-center max-w-2xl mx-auto mb-12">
+				<span className="inline-block px-3.5 py-1 rounded-full bg-red-50 text-red-700 text-xs font-semibold tracking-wide uppercase mb-3 border border-red-100">
+					Real Impact
+				</span>
+				<h2 className="type-heading-1 text-slate-900 mb-3">
+					The Problem, in Numbers
+				</h2>
+				<p className="type-body text-slate-600">
+					Understanding healthcare costs is one of the biggest challenges for Indian families.
+				</p>
+			</div>
+
+			<div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+				{STATS.map((stat, index) => (
+					<motion.div
+						key={index}
+						initial={{ opacity: 0, y: 24 }}
+						whileInView={{ opacity: 1, y: 0 }}
+						viewport={{ once: true, margin: '-50px' }}
+						transition={{
+							type: 'spring',
+							damping: 25,
+							stiffness: 200,
+							delay: index * 0.12,
+						}}
+						className="rounded-2xl p-7 flex flex-col justify-between bg-white border border-slate-200/80 shadow-xs hover:shadow-md transition-all duration-200"
+					>
+						<div>
+							{/* Large number as visual anchor (Section 15 typography: tight tracking) */}
+							<p className="text-4xl sm:text-5xl font-extrabold text-slate-900 tracking-tight leading-none mb-4">
+								{stat.number}
+							</p>
+
+							{/* One-line plain-language description */}
+							<p className="type-body text-slate-700 font-medium leading-snug">
+								{stat.description}
+							</p>
+						</div>
+
+						{/* Small muted source citation at bottom */}
+						<div className="mt-6 pt-4 border-t border-slate-100">
+							<p className="text-xs text-slate-400 font-medium">
+								Source: {stat.source}
+							</p>
+						</div>
+					</motion.div>
+				))}
+			</div>
 		</section>
 	);
 }

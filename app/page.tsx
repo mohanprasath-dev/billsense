@@ -1,9 +1,10 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion } from 'motion/react';
 import LandingNav from '@/components/landing-nav';
-import { HowItWorksSection, WhyThisExistsSection } from '@/components/landing-sections';
+import { HowItWorksSection, WhyThisExistsSection, ProblemStatsSection } from '@/components/landing-sections';
 import LandingTeamAndContact from '@/components/landing-team';
 
 export default function LandingPage() {
@@ -72,11 +73,14 @@ export default function LandingPage() {
 					</motion.div>
 				</section>
 
-				{/* How It Works Section (Step 3) */}
-				<HowItWorksSection />
-
 				{/* Problem / Solution Section (Step 3) */}
 				<WhyThisExistsSection />
+
+				{/* Problem in Numbers / Proof Stats Section (Step 8) */}
+				<ProblemStatsSection />
+
+				{/* How It Works Section (Step 3) */}
+				<HowItWorksSection />
 
 				{/* Team & Contact Section (Step 4) */}
 				<LandingTeamAndContact />
@@ -85,10 +89,10 @@ export default function LandingPage() {
 			{/* Footer */}
 			<footer className="border-t border-slate-200 bg-white py-8 px-4 sm:px-6">
 				<div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
-					<div className="flex items-center gap-2">
-						<div className="w-5 h-5 rounded-md bg-teal-600 text-white font-bold flex items-center justify-center text-[10px]">BS</div>
-						<span className="font-semibold text-slate-700">BillSense</span>
-						<span>— Healthcare Transparency for India</span>
+					<div className="flex items-center gap-2.5">
+						<Image src="/logo.png" alt="BillSense Logo" width={100} height={26} className="h-6 w-auto object-contain" />
+						<span className="text-slate-400">|</span>
+						<span>Healthcare Transparency for India</span>
 					</div>
 					<p className="text-center sm:text-right">
 						Designed & Developed by <a href="https://taskdrift.in" target="_blank" rel="noreferrer" className="text-teal-600 hover:underline font-medium">TaskDrift</a>
