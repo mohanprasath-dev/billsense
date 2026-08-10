@@ -1,5 +1,6 @@
 'use client';
 
+import { motion } from 'motion/react';
 import { useLanguage } from '@/lib/language-context';
 import type { AnalyzeResponse, MatchedResult } from '@/types';
 
@@ -10,10 +11,10 @@ interface ResultsSectionProps {
 
 const FLAG_CONFIG = {
 	high: {
-		badge: 'bg-red-500/20 text-red-300 border-red-500/30',
-		dot: 'bg-red-400',
+		badge: 'bg-red-50 text-red-700 border-red-200',
+		priceColor: 'text-red-700 font-bold',
 		icon: (
-			<svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+			<svg className="w-3.5 h-3.5 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
 				<path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126z" />
 			</svg>
 		),
@@ -21,10 +22,10 @@ const FLAG_CONFIG = {
 		label_ta: 'குறிப்பு விலையை விட அதிகம்',
 	},
 	fair: {
-		badge: 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30',
-		dot: 'bg-emerald-400',
+		badge: 'bg-emerald-50 text-emerald-700 border-emerald-200',
+		priceColor: 'text-slate-900 font-semibold',
 		icon: (
-			<svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+			<svg className="w-3.5 h-3.5 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
 				<path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
 			</svg>
 		),
@@ -32,10 +33,10 @@ const FLAG_CONFIG = {
 		label_ta: 'நியாயமான விலை',
 	},
 	no_data: {
-		badge: 'bg-amber-500/20 text-amber-300 border-amber-500/30',
-		dot: 'bg-amber-400',
+		badge: 'bg-amber-50 text-amber-700 border-amber-200',
+		priceColor: 'text-slate-900 font-semibold',
 		icon: (
-			<svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+			<svg className="w-3.5 h-3.5 text-amber-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
 				<path strokeLinecap="round" strokeLinejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z" />
 			</svg>
 		),
@@ -44,19 +45,30 @@ const FLAG_CONFIG = {
 	},
 };
 
-function TestCard({ item }: { item: MatchedResult }) {
+function TestCard({ item, index }: { item: MatchedResult; index: number }) {
 	const { language, t } = useLanguage();
 	const { test, billed_price, flag } = item;
 	const config = FLAG_CONFIG[flag];
 
 	return (
-		<div className="rounded-2xl bg-white/5 border border-white/10 p-5 hover:bg-white/8 transition-colors duration-200">
+		<motion.div
+			initial={{ opacity: 0, y: 16 }}
+			animate={{ opacity: 1, y: 0 }}
+			transition={{
+				type: 'spring',
+				damping: 25,
+				stiffness: 250,
+				delay: index * 0.07, // Staggered spring reveal ~70ms delay (Step 6)
+			}}
+			className="rounded-2xl glass-card p-5 hover:border-teal-200 transition-all duration-200 shadow-xs bg-white"
+		>
+			{/* Card Header: Test Name & Accessible Flag Badge */}
 			<div className="flex items-start justify-between gap-3 mb-3">
 				<div>
-					<h3 className="text-white font-semibold text-base leading-snug">
+					<h3 className="type-heading-2 text-slate-900 text-base leading-snug">
 						{language === 'ta' ? test.name_ta : test.name_en}
 					</h3>
-					<span className="text-white/40 text-xs">{test.category}</span>
+					<span className="text-xs font-medium text-slate-500">{test.category}</span>
 				</div>
 				<span className={`shrink-0 flex items-center gap-1.5 px-2.5 py-1 rounded-full border text-xs font-semibold ${config.badge}`}>
 					{config.icon}
@@ -64,25 +76,27 @@ function TestCard({ item }: { item: MatchedResult }) {
 				</span>
 			</div>
 
-			<p className="text-white/60 text-sm leading-relaxed mb-4">
+			{/* Plain Explanation */}
+			<p className="type-body text-slate-600 text-sm leading-relaxed mb-4">
 				{language === 'ta' ? test.explanation_ta : test.explanation_en}
 			</p>
 
-			{/* Price comparison */}
-			<div className="flex items-center gap-4 pt-3 border-t border-white/10">
+			{/* Price Comparison Block */}
+			<div className="flex items-center gap-4 pt-3.5 border-t border-slate-100">
 				<div className="flex-1">
-					<p className="text-white/40 text-xs mb-0.5">{t('CGHS Reference', 'CGHS குறிப்பு விலை')}</p>
-					<p className="text-teal-300 font-semibold">₹{test.cghs_price_inr.toLocaleString('en-IN')}</p>
+					<p className="type-caption text-slate-500 mb-0.5">{t('CGHS Reference', 'CGHS குறிப்பு விலை')}</p>
+					<p className="text-teal-700 font-bold text-base">₹{test.cghs_price_inr.toLocaleString('en-IN')}</p>
 				</div>
+
 				{billed_price !== null && billed_price > 0 && (
 					<>
-						<div className="w-px h-8 bg-white/10" />
+						<div className="w-px h-8 bg-slate-200" />
 						<div className="flex-1">
-							<p className="text-white/40 text-xs mb-0.5">{t('Billed Amount', 'வசூலிக்கப்பட்ட தொகை')}</p>
-							<p className={`font-semibold ${flag === 'high' ? 'text-red-300' : 'text-white'}`}>
+							<p className="type-caption text-slate-500 mb-0.5">{t('Billed Amount', 'வசூலிக்கப்பட்ட தொகை')}</p>
+							<p className={`text-base ${config.priceColor}`}>
 								₹{billed_price.toLocaleString('en-IN')}
 								{flag === 'high' && (
-									<span className="text-red-400/70 text-xs ml-1">
+									<span className="text-red-600 font-semibold text-xs ml-1.5">
 										(+{Math.round(((billed_price - test.cghs_price_inr) / test.cghs_price_inr) * 100)}%)
 									</span>
 								)}
@@ -91,7 +105,7 @@ function TestCard({ item }: { item: MatchedResult }) {
 					</>
 				)}
 			</div>
-		</div>
+		</motion.div>
 	);
 }
 
@@ -101,49 +115,55 @@ export default function ResultsSection({ results, onShare }: ResultsSectionProps
 	const fairCount = results.matched.filter((m) => m.flag === 'fair').length;
 
 	return (
-		<section>
-			{/* Summary bar */}
-			<div className="rounded-2xl bg-gradient-to-r from-teal-500/10 to-cyan-500/10 border border-teal-500/20 p-5 mb-6">
-				<div className="flex items-center justify-between flex-wrap gap-3">
+		<section className="space-y-4">
+			{/* Summary Bar */}
+			<motion.div
+				initial={{ opacity: 0, y: 12 }}
+				animate={{ opacity: 1, y: 0 }}
+				transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+				className="rounded-2xl bg-gradient-to-r from-teal-50 to-emerald-50 border border-teal-100 p-5 shadow-xs"
+			>
+				<div className="flex items-center justify-between flex-wrap gap-4">
 					<div>
-						<h2 className="text-white font-bold text-lg">
+						<h2 className="type-heading-2 text-slate-900">
 							{t('Your Bill Explained', 'உங்கள் மசோதா விளக்கம்')}
 						</h2>
-						<p className="text-white/50 text-sm mt-0.5">
+						<p className="type-subheadline text-slate-600 mt-0.5">
 							{t(
-								`${results.matched.length} test${results.matched.length !== 1 ? 's' : ''} identified`,
+								`${results.matched.length} test${results.matched.length !== 1 ? 's' : ''} identified and matched`,
 								`${results.matched.length} பரிசோதனைகள் கண்டறியப்பட்டன`
 							)}
 						</p>
 					</div>
-					<div className="flex gap-3">
+
+					<div className="flex gap-4">
 						{highCount > 0 && (
-							<div className="text-center">
-								<p className="text-red-300 font-bold text-xl">{highCount}</p>
-								<p className="text-red-300/60 text-xs">{t('Overpriced', 'அதிக விலை')}</p>
+							<div className="text-center px-3 py-1.5 rounded-xl bg-red-100/80 border border-red-200">
+								<p className="text-red-700 font-bold text-xl leading-none">{highCount}</p>
+								<p className="text-red-700/80 text-xs font-medium mt-0.5">{t('Overpriced', 'அதிக விலை')}</p>
 							</div>
 						)}
 						{fairCount > 0 && (
-							<div className="text-center">
-								<p className="text-emerald-300 font-bold text-xl">{fairCount}</p>
-								<p className="text-emerald-300/60 text-xs">{t('Fair', 'நியாயம்')}</p>
+							<div className="text-center px-3 py-1.5 rounded-xl bg-emerald-100/80 border border-emerald-200">
+								<p className="text-emerald-800 font-bold text-xl leading-none">{fairCount}</p>
+								<p className="text-emerald-800/80 text-xs font-medium mt-0.5">{t('Fair', 'நியாயம்')}</p>
 							</div>
 						)}
 					</div>
 				</div>
-			</div>
+			</motion.div>
 
-			{/* Test cards */}
+			{/* Staggered Test Cards List */}
 			<div className="flex flex-col gap-4">
 				{results.matched.map((item, i) => (
-					<TestCard key={item.test.id + i} item={item} />
+					<TestCard key={item.test.id + i} item={item} index={i} />
 				))}
 			</div>
 
-			{/* Unmatched section */}
+			{/* Unmatched Items Collapsible */}
 			{results.unmatched.length > 0 && (
-				<details className="mt-4 rounded-2xl bg-white/5 border border-white/10">
-					<summary className="px-5 py-4 cursor-pointer text-white/50 text-sm select-none hover:text-white/70 transition-colors">
+				<details className="rounded-2xl glass-card border border-slate-200 bg-white">
+					<summary className="px-5 py-4 cursor-pointer text-slate-600 text-sm font-medium select-none hover:text-slate-900 transition-colors">
 						{t(
 							`We couldn't identify ${results.unmatched.length} item${results.unmatched.length !== 1 ? 's' : ''}`,
 							`${results.unmatched.length} பொருட்களை கண்டறிய முடியவில்லை`
@@ -151,7 +171,7 @@ export default function ResultsSection({ results, onShare }: ResultsSectionProps
 					</summary>
 					<div className="px-5 pb-4 flex flex-col gap-2">
 						{results.unmatched.map((text, i) => (
-							<p key={i} className="text-white/40 text-sm font-mono bg-white/5 rounded-lg px-3 py-2">
+							<p key={i} className="text-slate-600 text-sm font-mono bg-slate-50 rounded-xl px-3 py-2 border border-slate-100">
 								{text}
 							</p>
 						))}
@@ -159,26 +179,18 @@ export default function ResultsSection({ results, onShare }: ResultsSectionProps
 				</details>
 			)}
 
-			{/* Share button */}
-			<button
+			{/* Share Button */}
+			<motion.button
+				whileTap={{ scale: 0.97 }}
+				transition={{ type: 'spring', damping: 25, stiffness: 400 }}
 				onClick={onShare}
-				className="mt-6 w-full rounded-2xl py-4 font-semibold text-base bg-white/10 border border-white/20 text-white hover:bg-white/15 transition-all duration-200 flex items-center justify-center gap-2"
+				className="mt-6 w-full rounded-2xl py-4 font-semibold text-base bg-slate-900 hover:bg-slate-800 text-white shadow-md transition-colors flex items-center justify-center gap-2 cursor-pointer"
 			>
-				<svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+				<svg className="w-5 h-5 text-teal-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
 					<path strokeLinecap="round" strokeLinejoin="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
 				</svg>
-				{t('Share Summary', 'சுருக்கம் பகிர்')}
-			</button>
-
-			{/* Disclaimer */}
-			<div className="mt-6 rounded-xl bg-white/5 border border-white/10 px-4 py-3">
-				<p className="text-white/30 text-xs text-center leading-relaxed">
-					{t(
-						'This is informational only, not medical advice. Prices are reference estimates based on CGHS rates, not guarantees.',
-						'இது தகவல் நோக்கங்களுக்காக மட்டுமே, மருத்துவ ஆலோசனை அல்ல. விலைகள் CGHS விகிதங்களை அடிப்படையாக கொண்ட மதிப்பீடுகளே.'
-					)}
-				</p>
-			</div>
+				<span>{t('Share Summary', 'சுருக்கம் பகிர்')}</span>
+			</motion.button>
 		</section>
 	);
 }

@@ -1,6 +1,7 @@
 'use client';
 
 import { useRef, useState } from 'react';
+import { motion } from 'motion/react';
 import { useLanguage } from '@/lib/language-context';
 import type { AnalyzeResponse } from '@/types';
 
@@ -22,14 +23,13 @@ export default function ShareCard({ results, onClose }: ShareCardProps) {
 	const handleShare = async () => {
 		setIsGenerating(true);
 		try {
-			// Dynamically import html2canvas to avoid SSR issues
 			const html2canvas = (await import('html2canvas')).default;
 
 			if (!cardRef.current) return;
 
 			const canvas = await html2canvas(cardRef.current, {
-				backgroundColor: '#0f1e2e',
-				scale: 2, // Retina quality
+				backgroundColor: '#0f172a',
+				scale: 2,
 				useCORS: true,
 				logging: false,
 			});
@@ -51,7 +51,6 @@ export default function ShareCard({ results, onClose }: ShareCardProps) {
 				});
 				setShared(true);
 			} else {
-				// Fallback: download
 				const url = URL.createObjectURL(blob);
 				const a = document.createElement('a');
 				a.href = url;
@@ -68,98 +67,111 @@ export default function ShareCard({ results, onClose }: ShareCardProps) {
 	};
 
 	return (
-		<div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm" onClick={onClose}>
-			<div className="w-full max-w-sm" onClick={(e) => e.stopPropagation()}>
-				{/* The shareable card — fixed 4:5 aspect */}
+		<div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm" onClick={onClose}>
+			<motion.div
+				initial={{ opacity: 0, scale: 0.95 }}
+				animate={{ opacity: 1, scale: 1 }}
+				exit={{ opacity: 0, scale: 0.95 }}
+				transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+				className="w-full max-w-sm"
+				onClick={(e) => e.stopPropagation()}
+			>
+				{/* Shareable Card Canvas */}
 				<div
 					ref={cardRef}
-					className="rounded-3xl overflow-hidden"
+					className="rounded-3xl overflow-hidden shadow-2xl"
 					style={{
-						background: 'linear-gradient(135deg, #0d1f2d 0%, #0a4a4a 50%, #0d1f2d 100%)',
+						background: 'linear-gradient(135deg, #0f172a 0%, #0f766e 60%, #0f172a 100%)',
 						aspectRatio: '4/5',
-						fontFamily: 'system-ui, sans-serif',
+						fontFamily: 'system-ui, -apple-system, sans-serif',
 					}}
 				>
-					<div className="h-full flex flex-col p-7">
+					<div className="h-full flex flex-col p-7 text-white">
 						{/* Header */}
-						<div className="flex items-center gap-2.5 mb-8">
-							<div style={{
-								width: 36, height: 36, borderRadius: 10,
-								background: 'linear-gradient(135deg, #2dd4bf, #06b6d4)',
-								display: 'flex', alignItems: 'center', justifyContent: 'center',
-							}}>
+						<div className="flex items-center gap-3 mb-6">
+							<div
+								style={{
+									width: 38,
+									height: 38,
+									borderRadius: 12,
+									background: 'linear-gradient(135deg, #14b8a6, #06b6d4)',
+									display: 'flex',
+									alignItems: 'center',
+									justifyContent: 'center',
+								}}
+							>
 								<svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="white" strokeWidth={2}>
 									<path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
 								</svg>
 							</div>
 							<div>
-								<p style={{ color: 'white', fontWeight: 700, fontSize: 18, margin: 0 }}>BillSense</p>
-								<p style={{ color: 'rgba(94,234,212,0.8)', fontSize: 11, margin: 0 }}>Medical Bill Analyser</p>
+								<p style={{ color: 'white', fontWeight: 700, fontSize: 18, margin: 0, letterSpacing: '-0.02em' }}>BillSense</p>
+								<p style={{ color: 'rgba(204,251,241,0.8)', fontSize: 11, margin: 0 }}>Medical Bill Analyser</p>
 							</div>
 						</div>
 
-						{/* Main stat */}
+						{/* Main Stat */}
 						<div className="flex-1 flex flex-col justify-center">
-							<p style={{ color: 'rgba(255,255,255,0.5)', fontSize: 13, marginBottom: 4 }}>
+							<p style={{ color: 'rgba(255,255,255,0.6)', fontSize: 13, marginBottom: 4 }}>
 								{t('Tests Explained', 'விளக்கப்பட்ட பரிசோதனைகள்')}
 							</p>
-							<p style={{ color: 'white', fontSize: 64, fontWeight: 800, lineHeight: 1, marginBottom: 24 }}>
+							<p style={{ color: 'white', fontSize: 60, fontWeight: 800, lineHeight: 1, marginBottom: 20, letterSpacing: '-0.03em' }}>
 								{results.matched.length}
 							</p>
 
-							{/* Flag counts */}
-							<div style={{ display: 'flex', gap: 12, marginBottom: 32 }}>
+							{/* Flag Counts */}
+							<div style={{ display: 'flex', gap: 10, marginBottom: 24 }}>
 								{highCount > 0 && (
 									<div style={{
-										flex: 1, background: 'rgba(239,68,68,0.15)', borderRadius: 12,
-										border: '1px solid rgba(239,68,68,0.3)', padding: '12px 14px',
+										flex: 1, background: 'rgba(239,68,68,0.18)', borderRadius: 12,
+										border: '1px solid rgba(239,68,68,0.35)', padding: '10px 12px',
 									}}>
-										<p style={{ color: '#fca5a5', fontSize: 22, fontWeight: 700, margin: 0 }}>{highCount}</p>
-										<p style={{ color: 'rgba(252,165,165,0.7)', fontSize: 11, margin: 0 }}>
+										<p style={{ color: '#fca5a5', fontSize: 20, fontWeight: 700, margin: 0 }}>{highCount}</p>
+										<p style={{ color: 'rgba(252,165,165,0.8)', fontSize: 10, margin: 0 }}>
 											{t('Overpriced', 'அதிக விலை')}
 										</p>
 									</div>
 								)}
 								{fairCount > 0 && (
 									<div style={{
-										flex: 1, background: 'rgba(16,185,129,0.15)', borderRadius: 12,
-										border: '1px solid rgba(16,185,129,0.3)', padding: '12px 14px',
+										flex: 1, background: 'rgba(16,185,129,0.18)', borderRadius: 12,
+										border: '1px solid rgba(16,185,129,0.35)', padding: '10px 12px',
 									}}>
-										<p style={{ color: '#6ee7b7', fontSize: 22, fontWeight: 700, margin: 0 }}>{fairCount}</p>
-										<p style={{ color: 'rgba(110,231,183,0.7)', fontSize: 11, margin: 0 }}>
+										<p style={{ color: '#6ee7b7', fontSize: 20, fontWeight: 700, margin: 0 }}>{fairCount}</p>
+										<p style={{ color: 'rgba(110,231,183,0.8)', fontSize: 10, margin: 0 }}>
 											{t('Fair Price', 'நியாயமான விலை')}
 										</p>
 									</div>
 								)}
 								{noDataCount > 0 && (
 									<div style={{
-										flex: 1, background: 'rgba(245,158,11,0.15)', borderRadius: 12,
-										border: '1px solid rgba(245,158,11,0.3)', padding: '12px 14px',
+										flex: 1, background: 'rgba(245,158,11,0.18)', borderRadius: 12,
+										border: '1px solid rgba(245,158,11,0.35)', padding: '10px 12px',
 									}}>
-										<p style={{ color: '#fcd34d', fontSize: 22, fontWeight: 700, margin: 0 }}>{noDataCount}</p>
-										<p style={{ color: 'rgba(252,211,77,0.7)', fontSize: 11, margin: 0 }}>
+										<p style={{ color: '#fcd34d', fontSize: 20, fontWeight: 700, margin: 0 }}>{noDataCount}</p>
+										<p style={{ color: 'rgba(252,211,77,0.8)', fontSize: 10, margin: 0 }}>
 											{t('No Data', 'தகவல் இல்லை')}
 										</p>
 									</div>
 								)}
 							</div>
 
-							{/* Test name pills */}
+							{/* Test Name Pills */}
 							<div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
-								{results.matched.slice(0, 6).map((m, i) => (
+								{results.matched.slice(0, 5).map((m, i) => (
 									<span key={i} style={{
-										background: 'rgba(255,255,255,0.08)', borderRadius: 8,
-										padding: '4px 10px', color: 'rgba(255,255,255,0.6)', fontSize: 11,
+										background: 'rgba(255,255,255,0.1)', borderRadius: 8,
+										padding: '4px 10px', color: 'rgba(255,255,255,0.85)', fontSize: 11,
 									}}>
 										{m.test.name_en}
 									</span>
 								))}
-								{results.matched.length > 6 && (
+								{results.matched.length > 5 && (
 									<span style={{
-										background: 'rgba(255,255,255,0.08)', borderRadius: 8,
-										padding: '4px 10px', color: 'rgba(255,255,255,0.4)', fontSize: 11,
+										background: 'rgba(255,255,255,0.1)', borderRadius: 8,
+										padding: '4px 10px', color: 'rgba(255,255,255,0.5)', fontSize: 11,
 									}}>
-										+{results.matched.length - 6} {t('more', 'மேலும்')}
+										+{results.matched.length - 5} {t('more', 'மேலும்')}
 									</span>
 								)}
 							</div>
@@ -167,54 +179,56 @@ export default function ShareCard({ results, onClose }: ShareCardProps) {
 
 						{/* Footer */}
 						<div style={{
-							borderTop: '1px solid rgba(255,255,255,0.1)',
-							paddingTop: 16, marginTop: 16,
+							borderTop: '1px solid rgba(255,255,255,0.12)',
+							paddingTop: 14, marginTop: 14,
 							display: 'flex', alignItems: 'center', justifyContent: 'space-between',
 						}}>
-							<p style={{ color: 'rgba(255,255,255,0.25)', fontSize: 10, margin: 0 }}>
+							<p style={{ color: 'rgba(255,255,255,0.4)', fontSize: 10, margin: 0 }}>
 								{t('Informational only • Not medical advice', 'தகவல் நோக்கம் மட்டுமே')}
 							</p>
-							<p style={{ color: 'rgba(45,212,191,0.6)', fontSize: 11, fontWeight: 600, margin: 0 }}>
-								billsense.app
+							<p style={{ color: 'rgba(45,212,191,0.9)', fontSize: 11, fontWeight: 600, margin: 0 }}>
+								billsense.taskdrift.in
 							</p>
 						</div>
 					</div>
 				</div>
 
-				{/* Action buttons */}
+				{/* Modal Actions */}
 				<div className="flex gap-3 mt-4">
 					<button
 						onClick={onClose}
-						className="flex-1 py-3 rounded-xl bg-white/10 text-white/70 text-sm font-medium hover:bg-white/15 transition-colors"
+						className="flex-1 py-3 rounded-2xl bg-white text-slate-700 font-semibold text-sm hover:bg-slate-100 transition-colors cursor-pointer"
 					>
 						{t('Close', 'மூடு')}
 					</button>
-					<button
+
+					<motion.button
+						whileTap={{ scale: 0.97 }}
 						onClick={handleShare}
 						disabled={isGenerating}
-						className="flex-1 py-3 rounded-xl bg-gradient-to-r from-teal-500 to-cyan-500 text-white text-sm font-semibold flex items-center justify-center gap-2 transition-opacity disabled:opacity-60"
+						className="flex-1 py-3 rounded-2xl bg-teal-600 hover:bg-teal-700 text-white font-semibold text-sm flex items-center justify-center gap-2 transition-colors cursor-pointer shadow-md shadow-teal-600/20"
 					>
 						{isGenerating ? (
 							<>
-								<svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
+								<svg className="w-4 h-4 animate-spin text-white" fill="none" viewBox="0 0 24 24">
 									<circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
 									<path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
 								</svg>
-								{t('Generating...', 'உருவாக்குகிறோம்...')}
+								<span>{t('Generating...', 'உருவாக்குகிறோம்...')}</span>
 							</>
 						) : shared ? (
-							t('✓ Shared!', '✓ பகிரப்பட்டது!')
+							<span>{t('✓ Shared!', '✓ பகிரப்பட்டது!')}</span>
 						) : (
 							<>
 								<svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
 									<path strokeLinecap="round" strokeLinejoin="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
 								</svg>
-								{t('Share / Download', 'பகிர் / பதிவிறக்கு')}
+								<span>{t('Share / Download', 'பகிர் / பதிவிறக்கு')}</span>
 							</>
 						)}
-					</button>
+					</motion.button>
 				</div>
-			</div>
+			</motion.div>
 		</div>
 	);
 }
