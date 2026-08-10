@@ -132,7 +132,7 @@ export default function BillSenseAppPage() {
 				<div className="text-center mb-8">
 					<div className="inline-flex md:hidden items-center gap-1.5 px-3 py-1 rounded-full bg-teal-50 border border-teal-200 text-teal-800 text-xs font-medium mb-3">
 						<span className="w-1.5 h-1.5 rounded-full bg-teal-500" />
-						Live Demo — Full Product in Development
+						Live Demo: Full Product in Development
 					</div>
 
 					<h1 className="type-heading-1 text-slate-900 mb-2">

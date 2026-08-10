@@ -43,7 +43,7 @@ export default function ShareCard({ results, onClose }: ShareCardProps) {
 			if (navigator.canShare?.({ files: [file] })) {
 				await navigator.share({
 					files: [file],
-					title: 'BillSense — Medical Bill Summary',
+					title: 'BillSense | Medical Bill Summary',
 					text: t(
 						`My medical bill has ${results.matched.length} tests explained by BillSense`,
 						`என் மருத்துவ மசோதாவில் ${results.matched.length} பரிசோதனைகளை BillSense விளக்கியது`

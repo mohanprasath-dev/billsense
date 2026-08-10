@@ -28,7 +28,7 @@ export default function LandingPage() {
 						className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-teal-50 border border-teal-200 text-teal-800 text-xs font-semibold tracking-wide mb-8 shadow-xs"
 					>
 						<span className="w-2 h-2 rounded-full bg-teal-500 animate-pulse" />
-						<span>Live Demo — Full Product in Development</span>
+						<span>Live Demo: Full Product in Development</span>
 					</motion.div>
 
 					{/* Core Value Proposition Headline */}

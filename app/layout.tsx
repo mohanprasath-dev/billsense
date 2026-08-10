@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ['latin'], display: 'swap' });
 
 export const metadata: Metadata = {
 	metadataBase: new URL('https://billsense.taskdrift.in'),
-	title: 'BillSense — Understand Your Medical Bill',
+	title: 'BillSense | Understand Your Medical Bill',
 	description:
 		'Upload a photo of your Indian medical bill or prescription and get plain-language explanations of every test with CGHS reference pricing. Available in English and Tamil.',
 	keywords: ['medical bill', 'India', 'CGHS', 'bill explainer', 'Tamil', 'health'],
@@ -17,14 +17,14 @@ export const metadata: Metadata = {
 		apple: '/logo.png',
 	},
 	openGraph: {
-		title: 'BillSense — Understand Your Medical Bill',
+		title: 'BillSense | Understand Your Medical Bill',
 		description: 'Plain-language explanations of every test on your bill, with CGHS reference pricing.',
 		type: 'website',
-		images: [{ url: '/logo+name.png', width: 1200, height: 630, alt: 'BillSense — Understand Your Medical Bill' }],
+		images: [{ url: '/logo+name.png', width: 1200, height: 630, alt: 'BillSense | Understand Your Medical Bill' }],
 	},
 	twitter: {
 		card: 'summary_large_image',
-		title: 'BillSense — Understand Your Medical Bill',
+		title: 'BillSense | Understand Your Medical Bill',
 		description: 'Plain-language explanations of every test on your bill, with CGHS reference pricing.',
 		images: ['/logo+name.png'],
 	},
